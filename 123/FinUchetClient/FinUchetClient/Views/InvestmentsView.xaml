@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="FinUchetClient.Views.InvestmentsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#F5F7FA">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Border Grid.Row="0" Background="White" Padding="20" Margin="0,0,0,20" CornerRadius="8">
+            <StackPanel>
+                <TextBlock Text="📊 Инвестиционный портфель" 
+                           FontSize="24" 
+                           FontWeight="Bold"
+                           Foreground="#2C3E50"/>
+                <TextBlock Text="Управляйте своими инвестициями и отслеживайте доходность" 
+                           FontSize="13" 
+                           Foreground="#7F8C8D"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Статистика портфеля -->
+        <Border Grid.Row="1" Background="White" Padding="20" Margin="0,0,0,20" CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Background="#E8F8F5" Padding="15" Margin="0,0,10,0" CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="💰 Всего вложено" Foreground="#27AE60" FontSize="13"/>
+                        <TextBlock x:Name="TotalInvestedText" FontSize="22" FontWeight="Bold" Foreground="#27AE60" Text="0 ₽"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Background="#E8F4FD" Padding="15" Margin="5,0">
+                    <StackPanel>
+                        <TextBlock Text="📈 Текущая стоимость" Foreground="#2980B9" FontSize="13"/>
+                        <TextBlock x:Name="CurrentValueText" FontSize="22" FontWeight="Bold" Foreground="#2980B9" Text="0 ₽"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="2" Background="#FEF5E8" Padding="15" Margin="5,0">
+                    <StackPanel>
+                        <TextBlock Text="📉 Прибыль/Убыток" Foreground="#E67E22" FontSize="13"/>
+                        <TextBlock x:Name="ProfitLossText" FontSize="22" FontWeight="Bold" Foreground="#E67E22" Text="0 ₽"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="3" Background="#F9E8F5" Padding="15" Margin="10,0,0,0">
+                    <StackPanel>
+                        <TextBlock Text="📊 Доходность" Foreground="#8E44AD" FontSize="13"/>
+                        <TextBlock x:Name="ProfitPercentText" FontSize="22" FontWeight="Bold" Foreground="#8E44AD" Text="0%"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Панель добавления инвестиции -->
+        <Border Grid.Row="2" Background="White" Padding="20" Margin="0,0,0,20" CornerRadius="8">
+            <WrapPanel>
+                <TextBox x:Name="InvestmentNameBox" Width="150" Height="35" Margin="0,0,10,0" 
+                         ToolTip="Название" FontSize="13"/>
+                <ComboBox x:Name="InvestmentTypeBox" Width="120" Height="35" Margin="0,0,10,0" FontSize="13" SelectedIndex="0">
+                    <ComboBoxItem Content="Акции"/>
+                    <ComboBoxItem Content="Облигации"/>
+                    <ComboBoxItem Content="Криптовалюта"/>
+                    <ComboBoxItem Content="Недвижимость"/>
+                    <ComboBoxItem Content="Депозит"/>
+                </ComboBox>
+                <TextBox x:Name="QuantityBox" Width="80" Height="35" Margin="0,0,10,0" ToolTip="Количество" FontSize="13" Text="1"/>
+                <TextBox x:Name="PurchasePriceBox" Width="100" Height="35" Margin="0,0,10,0" ToolTip="Цена покупки" FontSize="13" Text="0"/>
+                <TextBox x:Name="CurrentPriceBox" Width="100" Height="35" Margin="0,0,10,0" ToolTip="Текущая цена" FontSize="13" Text="0"/>
+                <Button Content="Добавить" Width="80" Height="35" Background="#2ECC71" Foreground="White" Click="AddInvestment_Click" FontSize="13"/>
+            </WrapPanel>
+        </Border>
+
+        <!-- Простая таблица -->
+        <DataGrid x:Name="InvestmentsGrid" Grid.Row="3" Background="White" AutoGenerateColumns="True" IsReadOnly="True" RowHeight="35" FontSize="13"/>
+    </Grid>
+</UserControl>

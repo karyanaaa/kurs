@@ -1,0 +1,120 @@
+﻿<Window x:Class="FinUchetClient.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ФинУчет - Вход"
+        Width="400" Height="550"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Border CornerRadius="10" Background="White" Padding="30">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15" Opacity="0.2"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Кнопка закрытия (крестик) -->
+            <Button Grid.Row="0" 
+                    Content="✕" 
+                    HorizontalAlignment="Right"
+                    Background="Transparent"
+                    Foreground="#7F8C8D"
+                    BorderThickness="0"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Cursor="Hand"
+                    Width="30" Height="30"
+                    Click="CloseButton_Click"/>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                <!-- Заголовок -->
+                <TextBlock Text="💰 ФинУчет" 
+                           FontSize="32" 
+                           FontWeight="Bold" 
+                           Foreground="#2C3E50"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"/>
+
+                <TextBlock Text="Система учета финансов" 
+                           FontSize="12" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,30"
+                           Foreground="#7F8C8D"/>
+
+                <!-- Поле логина -->
+                <TextBlock Text="Имя пользователя" 
+                           Margin="0,0,0,5" 
+                           Foreground="#666"
+                           FontSize="12"/>
+                <TextBox x:Name="UsernameTextBox" 
+                         Height="40"
+                         FontSize="14"
+                         Padding="12,10"
+                         BorderBrush="#DDD"
+                         BorderThickness="1"
+                         Margin="0,0,0,15"
+                         TextChanged="UsernameTextBox_TextChanged"/>
+
+                <!-- Поле пароля -->
+                <TextBlock Text="Пароль" 
+                           Margin="0,0,0,5" 
+                           Foreground="#666"
+                           FontSize="12"/>
+                <PasswordBox x:Name="PasswordBox" 
+                             Height="40"
+                             FontSize="14"
+                             Padding="12,10"
+                             BorderBrush="#DDD"
+                             BorderThickness="1"
+                             Margin="0,0,0,15"
+                             PasswordChanged="PasswordBox_PasswordChanged"/>
+
+                <!-- Ошибка -->
+                <TextBlock x:Name="ErrorTextBlock"
+                           Foreground="#E74C3C"
+                           Margin="0,0,0,15"
+                           TextWrapping="Wrap"
+                           FontSize="12"
+                           Visibility="Collapsed"/>
+
+                <!-- Кнопка входа -->
+                <Button Content="Войти"
+                        Height="45"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        Background="#3498DB"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Margin="0,0,0,15"
+                        Click="LoginButton_Click"/>
+
+                <!-- Кнопка "Забыли пароль?" -->
+                <Button Content="❓ Забыли пароль?"
+                        Height="35"
+                        FontSize="13"
+                        Background="Transparent"
+                        Foreground="#7F8C8D"
+                        BorderThickness="1"
+                        BorderBrush="#BDC3C7"
+                        Cursor="Hand"
+                        Margin="0,0,0,15"
+                        Click="ForgotPasswordButton_Click"/>
+
+                <!-- Ссылка на регистрацию -->
+                <TextBlock HorizontalAlignment="Center" FontSize="12">
+                    <Hyperlink Click="RegisterHyperlink_Click">
+                        <Run Text="Нет аккаунта? Зарегистрироваться"/>
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

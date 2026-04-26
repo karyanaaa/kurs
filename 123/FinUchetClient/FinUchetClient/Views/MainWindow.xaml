@@ -1,0 +1,79 @@
+﻿<Window x:Class="FinUchetClient.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ФинУчет - Личные финансы"
+        Width="1200" Height="800"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="#F5F7FA">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Боковая панель навигации -->
+        <Border x:Name="SidebarPanel" Grid.Column="0" Background="#2C3E50">
+            <StackPanel>
+                <!-- Логотип -->
+                <Border Height="180" Background="#1E2B38">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="💰 ФинУчет" 
+                                   FontSize="26" 
+                                   FontWeight="Bold" 
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Личные финансы под контролем" 
+                                   FontSize="12" 
+                                   Foreground="#95A5A6"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Информация о пользователе -->
+                <Border Background="#34495E" Margin="15,20,15,10" Padding="15" CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock Text="👤 Добро пожаловать," 
+                                   Foreground="#BDC3C7"
+                                   FontSize="12"/>
+                        <TextBlock x:Name="UserNameText" 
+                                   Text="Пользователь" 
+                                   Foreground="White"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Кнопки навигации -->
+                <Button Content="📊 Операции" Margin="15,5" Background="Transparent" Foreground="White" 
+                        FontSize="14" HorizontalAlignment="Left" Padding="12,10" Click="ShowTransactions_Click" Width="126"/>
+                <Button Content="📁 Категории" Margin="15,5" Background="Transparent" Foreground="White" 
+                        FontSize="14" HorizontalAlignment="Left" Padding="12,10" Click="ShowCategories_Click" Width="127"/>
+                <Button Content="📈 Статистика" Margin="15,5" Background="Transparent" Foreground="White" 
+                        FontSize="14" HorizontalAlignment="Left" Padding="12,10" Click="ShowStatistics_Click" Width="127"/>
+                <Button Content="💰 Инвестиции" Margin="15,5" Background="Transparent" Foreground="White" 
+                        FontSize="14" HorizontalAlignment="Left" Padding="12,10" Click="ShowInvestments_Click"/>
+                <Button Content="📚 Полезное" Margin="15,5" Background="Transparent" Foreground="White" 
+                        FontSize="14" HorizontalAlignment="Left" Padding="12,10" Click="ShowUseful_Click" Width="127"/>
+
+                <!-- Кнопка темы с именем -->
+                <Button x:Name="ThemeToggleButton" Content="🌓 Тёмная тема" Margin="15,5" Background="Transparent" Foreground="White" 
+                        FontSize="14" HorizontalAlignment="Left" Padding="12,10" Click="ToggleTheme_Click" Width="130"/>
+
+                <Separator Background="#3A546D" Margin="15,20,15,10" Height="1"/>
+
+                <!-- Кнопка выхода -->
+                <Button Content="🚪 Выход" Margin="15,10" Height="40" Background="#E74C3C" Foreground="White" 
+                        BorderThickness="0" Cursor="Hand" Click="LogoutButton_Click" FontSize="14"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer Grid.Column="1" Background="#F5F7FA">
+            <ContentControl x:Name="MainContentArea" Margin="25"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
